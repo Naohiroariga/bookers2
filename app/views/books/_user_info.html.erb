@@ -1,0 +1,40 @@
+     <h2> User Info</h2>
+     <% @books.each do |book| %>
+     <%= image_tag book.user.get_profile_image(63, 63) %>
+     <table class="table">
+       <t.body>
+         <tr>
+           <th>name</th>
+           <th><%= book.user.name %></th>
+         </tr>
+         <tr>
+           <th>introduction</th>
+           <th><%= book.user.introduction %></th>
+         </tr>
+       </t.body>
+     </table>
+
+     <div class="row">
+       <%= link_to (edit_user_path(book.user.id)), class: 'btn btn-outline-secondary btn-block btn-sm' do %><i class="fas fa-user-cog"></i><% end %>
+     </div>
+     <% end %>
+
+
+     <h2 class="mt-3">Book</h1>
+     <%= form_with model: @book do |f| %>
+     <div class="form-group">
+       <%= f.label :title %><br />
+       <%= f.text_field :title, class:'form-control' %>
+     </div>
+
+     <div class="form-group">
+       <%= f.label :Opinion %><br />
+       <%= f.text_area :body, class:'form-control' %>
+     </div>
+
+     <div class="form-group">
+       <%= f.submit "Create Book", class:"btn btn-success" %>
+     </div>
+
+     <% end %>
+  </div>
