@@ -1,7 +1,9 @@
 <div class="container px-5 px-sm-0">
+　<%= render 'error_message', book: @book %>
+
   <div class="row">
     <div class="col-md-3">
-      <%= render 'user_info', user: @user_date %>
+      <%= render 'user_info', user: @user %>
 
       <div class="col-md-8 offset-md-1">
        <%= render 'book_list', books: @books %>

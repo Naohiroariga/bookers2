@@ -1,19 +1,21 @@
 <div class="container">
+  <%= render 'error_message', book: @book %>
+
   <div class="row">
     <div class="col-md-3">
-      <%= render 'user_info', user: @book_show.user %>
+      <%= render 'user_info', user: @user.user %>
 
       <div class="col-md-8 offset-md-1">
        <h2>Book detail</h2>
        <table class="table">
          <tr>
-           <td><%= link_to (user_path(@book_show.user.id)) do %><%= image_tag @book_show.user.get_profile_image(100, 100) %><br>
-               <%= @book_show.user.name %><% end %></td>
-           <td><%= link_to @book_show.title, book_path(@book_show.id) %></td>
-           <td><%= @book_show.body %></td>
-           <% if @book_show.user.id == current_user.id %>
-             <td><%= link_to "Edit", edit_book_path(@book_show.id), class:'btn btn-success btn-sm' %></td>
-             <td><%= link_to "Destroy", book_path(@book_show.id), method: :delete, class:'btn btn-danger btn-sm' %></td>
+           <td><%= link_to (user_path(@user.user.id)) do %><%= image_tag @user.user.get_profile_image(100, 100) %><br>
+               <%= @user.user.name %><% end %></td>
+           <td><%= link_to @user.title, book_path(@user.id) %></td>
+           <td><%= @user.body %></td>
+           <% if @user.user.id == current_user.id %>
+             <td><%= link_to "Edit", edit_book_path(@user.id), class:'btn btn-success btn-sm' %></td>
+             <td><%= link_to "Destroy", book_path(@user.id), method: :delete, "data-confirm" => "本当に消しますか?", class:'btn btn-danger btn-sm' %></td>
           <% end %>
          </tr>
        </table>
